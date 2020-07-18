@@ -1,0 +1,44 @@
+	EN	HI	PL	ES	DE	FR	JP
+^text_play	Play now!	vHkh [ksysa	Play now!	Play now!	Play now!	Play now!	Play now!
+^text_quit	Quit	cgkj tk,a	Quit	Quit	Quit	Quit	Quit
+^text_howtoplay	How to play	dSls [ksysa					
+^guest	Continue as Guest	xsLV ds :i esa [ksysa					
+^signin	Sign In	lkbu bu djsa					
+^newuser	New User	u, ;wtj tksM+sa					
+^mobile_no	Mobile No.	eksckby uacj					
+^verification_msg	will send you an OTP to verify your phone no.	vkids Qksu uacj dks lR;kfir djus ds fy, vkidks ,d vksVhih HkstsxkA					
+^request_otp	Request OTP	vksVhih Hkstsa					
+^signin_header	Sign In	lkbu bu					
+^newuser_header	New User	u, ;wtj					
+^enter_otp	Please enter the <b>OTP</b> sent on mobile no.	uhps ds eksckby uacj \n ij Hksts x, vksVhih Mkysa					
+^resend_otp	<u>Resend OTP</u>	<u>fQj ls vksVhih Hkstsa</u>					
+^submit	Submit	ntZ djsa					
+^display_name	Display Name	fMLIys uke					
+^full_name	Full Name	iwjk uke					
+^email_op	Email(Optional)	bZesy ¼oSdfYid½					
+^state	State	jkT;					
+^no_state	(Not for Assam, Nagaland,Orissa,Sikkim and Telangan)	¼vle] ukxkySaM] mM+hlk] flfDde vkSj rsyaxku ds fy, ugha½					
+^ref_code	Referral Code(Optional)	jsQjy dksM ¼oSdfYid½					
+^mrkt_sms	Marketing SMS	ekdsZfVax lUns'k					
+^mrkt_email	Marketing Email	ekdsZfVax bZesy					
+^allow	Allow	pkyw j[ksa					
+^prevent	Prevent	can j[ksa					
+^age_condt	My age is 18 years or older	esjh mez 18 o"kZ ;k mlls vf/kd gS					
+^tnc_condt	I have read and agree with the <u>terms & conditions</u> of Lotto Quiz	eSaus <u>fu;e vkSj 'krksaZ</u> dks i<+k vkSj mlls lger gw¡					
+^cancel	Cancel	dkVsa					
+^select	Select	pqusa					
+^select_game	Select Game	xse pqusa					
+^real_game	Real Game	fj;y xse					
+^free_game	Free Game	Ýh xse					
+^err_mob	You must enter a valid mobile no	oS/k eksckby uacj ntZ djuk vfuok;Z gS					
+^err_otpformat	You must fill OTP fields	vksVhih ntZ djuk vfuok;Z gS					
+^err_otpmatch	OTP must be same as received	vksVhih] çkIr vks Vh fi ds leku gksuk pkfg,					
+^err_dispname	You must enter your display name	vkidks viuk fMLIys uke ntZ djuk gksxk					
+^err_fullname	You must enter your full name	vkidks viuk iwjk uke ntZ djuk gksxk					
+^err_state	You must enter your state	vkidks viuk jkT; ntZ djuk gksxk					
+^err_agedec	Your age must be 18 years or older	vkidh vk;q 18 o"kZ ;k mlls vf/kd gksuh pkfg,					
+^err_tncdec	You must accept our T&C	vkidks gekjs fu;e o 'krksaZ dks Lohdkj djuk gksxk					
+^cash_bal	Cash Balance	dS'k cSysal					
+^coin_bal	Coins	d‚bUl					
+^add_cash	Add Cash	dS'k tksM+sa					
+^add_coin	Add Coins	d‚bUl tksM+sa					
