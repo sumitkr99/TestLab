@@ -28,16 +28,17 @@ public class QuizManager : MonoBehaviour
     private bool _isAnswered;
     private float _quizExpireTimer;
 
+    public delegate void QuizQuestionDelegate(string ques, string op1, string op2, string op3, string ans);
+
+    public QuizQuestionDelegate quizQuestionDelegate;
+
 
     // Start is called before the first frame update
     private void Start()
     {
-        _randomQuestionIndex = Random.Range(0, questionsList.Count);
-        question.text = questionsList[_randomQuestionIndex];
-        options[0].GetComponentInChildren<TMP_Text>().text = options0List[_randomQuestionIndex];
-        options[1].GetComponentInChildren<TMP_Text>().text = options1List[_randomQuestionIndex];
-        options[2].GetComponentInChildren<TMP_Text>().text = options2List[_randomQuestionIndex];
-        _correctOption = correctOptionIndexList[_randomQuestionIndex];
+        quizQuestionDelegate = OnQuizDelegate;
+        StartCoroutine(API.GetQuizQuestionsEnumerator(quizQuestionDelegate, SetLocalQuizQuestion));
+
 
         foreach (var btn in options)
         {
@@ -46,6 +47,26 @@ public class QuizManager : MonoBehaviour
 
         quizTimer.text = data.quizDuration.ToString();
         // coinCashParticle.SetActive(false);
+    }
+
+    private void OnQuizDelegate(string ques, string op1, string op2, string op3, string ans)
+    {
+        print(ques);
+        question.text = ques;
+        options[0].GetComponentInChildren<TMP_Text>().text = op1;
+        options[1].GetComponentInChildren<TMP_Text>().text = op2;
+        options[2].GetComponentInChildren<TMP_Text>().text = op3;
+        _correctOption = int.Parse(ans.Substring(ans.Length - 1)) - 1;
+    }
+
+    private void SetLocalQuizQuestion()
+    {
+        _randomQuestionIndex = Random.Range(0, questionsList.Count);
+        question.text = questionsList[_randomQuestionIndex];
+        options[0].GetComponentInChildren<TMP_Text>().text = options0List[_randomQuestionIndex];
+        options[1].GetComponentInChildren<TMP_Text>().text = options1List[_randomQuestionIndex];
+        options[2].GetComponentInChildren<TMP_Text>().text = options2List[_randomQuestionIndex];
+        _correctOption = correctOptionIndexList[_randomQuestionIndex];
     }
 
     // Update is called once per frame
@@ -59,14 +80,14 @@ public class QuizManager : MonoBehaviour
         DisableAllOptions();
         if (options.IndexOf(btn) == _correctOption)
         {
-            Instantiate(soundManager.rightOption);
+            PlaySoundImmediately(soundManager.rightOption);
 
             Invoke(nameof(RightAnswer), 1);
             btn.GetComponent<Image>().sprite = rightSprite;
         }
         else
         {
-            Instantiate(soundManager.wrongOption);
+            PlaySoundImmediately(soundManager.wrongOption);
             Invoke(nameof(WrongAnswer), 1);
             btn.GetComponent<Image>().sprite = wrongSprite;
         }
@@ -91,7 +112,7 @@ public class QuizManager : MonoBehaviour
         DisableAllOptions();
         if (!_isAnswered)
         {
-            Instantiate(soundManager.timesUp);
+            PlaySoundImmediately(soundManager.timesUp);
             Invoke(nameof(WrongAnswer), 1);
         }
     }
@@ -124,7 +145,7 @@ public class QuizManager : MonoBehaviour
                 if (lastTime != seconds && !_isAnswered)
                 {
                     lastTime = seconds;
-                    Instantiate(soundManager.wheelTick);
+                    PlaySoundImmediately(soundManager.wheelTick);
                 }
             }
 
@@ -137,6 +158,12 @@ public class QuizManager : MonoBehaviour
     private void PlayQuizOnSound()
     {
         soundManager.gameMusicAS.Stop();
-        Instantiate(soundManager.quizOn);
+        PlaySoundImmediately(soundManager.quizOn);
+    }
+
+    private void PlaySoundImmediately(GameObject soundObject)
+    {
+        if (PlayerPrefs.GetString("SoundState").Equals(false.ToString())) return;
+        Instantiate(soundObject);
     }
 }
